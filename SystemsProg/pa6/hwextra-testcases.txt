@@ -1,0 +1,37 @@
+Zachary Allin
+RUID: 138-00-0613
+CS 214
+Rutgers University
+
+HWEXTRA-TESTCASES.TXT
+
+The following are test cases for the othermalloc.c code.  It contains inputs and expected 
+outputs.
+
+::TEST CASE 1::
+Allocate a character array with malloc.  
+Free the array.
+Free 2 bytes behind the array  ->  An error should occur.
+Free the array again.  ->  An error should occur.
+
+::TEST CASE 2::
+Declare an integer.
+Free the integer.  ->  An error should occur.
+
+::TEST CASE 3::
+Allocate an array that is almost as large as the large chunk of space.
+Allocate an array that is larger than the threshold, but won't be able to fit into the large
+chunk of space.
+Free both arrays.
+
+As output, there should be a string that says the array was successfully allocated.
+
+::TEST CASE 4::
+Allocate an array.
+Free the array.
+Allocate the array.
+Free the array.
+Free the array again. 
+
+There should be a single error message indicating that the last free was in error for 
+freeing a pointer that was already freed.  

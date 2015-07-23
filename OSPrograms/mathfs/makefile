@@ -1,0 +1,5 @@
+all:
+	gcc -Wall mathfs.c `pkg-config fuse --cflags --libs` -o mathfs
+
+clean:
+	rm -rf *.o mathfs

@@ -1,0 +1,23 @@
+READ a
+READ b
+LOADI r1 #3
+LOAD r2 a
+LOAD r3 b
+MUL r4 r2 r3
+ADD r5 r1 r4
+STORE c r5
+LOAD r6 c
+LOADI r7 #1
+ADD r8 r6 r7
+STORE d r8
+WRITE c
+WRITE d
+LOAD r9 c
+LOAD r10 d
+STORE c r10
+STORE d r9
+LOADI r13 #1
+STORE a r13
+WRITE c
+WRITE d
+WRITE a

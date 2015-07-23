@@ -1,0 +1,8 @@
+ <<< Found TRUE dependence on variable "A" with distance 2 >>>
+ <<< Assume TRUE dependence on variable "A" with unknown distance >>>
+ <<< Found OUTPUT dependence on variable "A" >>>
+ <<< Assume OUTPUT dependence on variable "A" >>>
+ <<< Found NO dependencies: VECTORIZE >>>
+
+ <<< Found at least one dependence: CANNOT VECTORIZE >>>
+

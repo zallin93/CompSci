@@ -1,0 +1,7 @@
+
+loadI 1024 => r0
+store r1 => r0
+load r0 => r2
+add r3, r4 => r1
+addI r3, 16 => r15
+

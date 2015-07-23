@@ -1,0 +1,63 @@
+	// Assign STATIC_AREA_ADDRESS to register "r0"
+ 	 loadI 1024 	=> r0 
+	// Unconditional branch should go here
+ 	 vecton 
+	// Initialize ind. variable "i" at offset 800 with lower bound value 1
+ 	 loadI 800 	=> r1 
+ 	 add r0, r1 	=> r2 
+ 	 loadI 1 	=> r5 
+ 	 loadI 100 	=> r6 
+ 	 store r5 	=> r2 
+	// Generate control code for "FOR" 
+L0:	 loadAI r0, 800 	=> r3 
+ 	 cmp_LE r3, r6 	=> r4
+ 	 cbr r4 	=> L1, L2
+	// below is TRUE branch label - zda3 
+
+L1:	 nop 
+	// Load RHS value of variable "i" at offset 800
+ 	 loadAI r0, 800 	=> r7 
+	// Load LHS value of array variable "a" with based address 0
+ 	 loadI 4 	=> r9 
+ 	 mult r7, r9 	=> r10 
+ 	 loadI 0 	=> r11 
+ 	 add r11, r10 	=> r12 
+ 	 add r0, r12 	=> r8 
+	// Load RHS value of variable "i" at offset 800
+ 	 loadAI r0, 800 	=> r13 
+	// Load RHS value of array variable "a" with based address 0
+ 	 loadI 4 	=> r15 
+ 	 mult r13, r15 	=> r16 
+ 	 loadI 0 	=> r17 
+ 	 add r17, r16 	=> r18 
+ 	 loadAO r0, r18 	=> r14 
+	// Load RHS value of variable "i" at offset 800
+ 	 loadAI r0, 800 	=> r19 
+	// Load RHS value of array variable "b" with based address 400
+ 	 loadI 4 	=> r21 
+ 	 mult r19, r21 	=> r22 
+ 	 loadI 400 	=> r23 
+ 	 add r23, r22 	=> r24 
+ 	 loadAO r0, r24 	=> r20 
+	// EXP + EXP 
+
+ 	 add r14, r20 	=> r25 
+ 	 loadI 5 	=> r26 
+	// EXP + EXP 
+
+ 	 add r25, r26 	=> r27 
+ 	 store r27 	=> r8 
+	// in ELSE... incrementing loop index..
+
+ 	 loadAI r0, 800 	=> r28 
+ 	 addI r28, 1 	=> r29 
+ 	 storeAI r29 	=> r0, 800 
+ 	 br L0
+L2:	 nop 
+	//  <<< Found TRUE dependence on variable "A" with distance 2 >>>
+	//  <<< Assume TRUE dependence on variable "A" with unknown distance >>>
+	//  <<< Found OUTPUT dependence on variable "A" >>>
+	//  <<< Assume OUTPUT dependence on variable "A" >>>
+	//  <<< Found NO dependencies: VECTORIZE >>>
+	//  <<< Found at least one dependence: CANNOT VECTORIZE >>>
+ 	 vectoff 

@@ -1,0 +1,27 @@
+Zachary Allin
+RUID: 138-00-0613
+CS 214
+Rutgers University
+
+README
+
+The included is an implementation of the malloc and free functions.  They utilize an 
+already allotted amount of memory, particularly 5000 bytes of memory in the provided code.
+This can be adjusted by changing the TOTALSIZE macro in the othermalloc.h header file.  The
+rest of the implementation will adjust accordingly. 
+
+This implementation handles fragmentation by splitting into two chunks of memory: a chunk 
+for larger requests, and a chunk for smaller requests.  This is set in the THRESHOLD macro 
+in the othermalloc.h header file.  If a request is too large for the initially selected
+section, the program will try searching the other chunk for the correct amount of space.  
+If the right amount of space still cannot be found, unfortunately the program will not be 
+able to accept the request, and will prompt the user with an error message. 
+
+The implementation of free will only free pointers that were allocated by the accompanying 
+implementation of malloc.  It will provide the user with errors whenever an attempt is 
+made to use it in any other way, ie freeing a pointer that was not allocated, freeing a 
+pointer multiple times, etc.  
+
+The tests for this implementation are included in test.c, and can be run by calling "make", 
+running test with "./test" and then entering the number of the test case you would like 
+to run, as documented in the hwextra-testcases.txt file.

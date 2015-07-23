@@ -1,0 +1,16 @@
+	// Assign STATIC_AREA_ADDRESS to register "r0"
+ 	 loadI 1024 	=> r0 
+ 	 loadI 0 	=> r1 
+ 	 add r0, r1 	=> r2 
+ 	 loadI 1 	=> r3 
+	// Code for "ASSIGNMENT"
+ 	 store r3 	=> r2 
+ 	 loadI 4 	=> r4 
+ 	 add r0, r4 	=> r5 
+ 	 loadI 2 	=> r6 
+	// Code for "ASSIGNMENT"
+ 	 store r6 	=> r5 
+ 	 loadAI r0, 13037776 	=> r0 
+	// Code for "PRINT"
+ 	 storeAI r0 	=> r0, 8 
+ 	 output 1032
